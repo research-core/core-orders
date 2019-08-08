@@ -36,7 +36,7 @@ class AllOrderAdminWidget(OrderAdminWidget):
         contenttype = ContentType.objects.get_for_model(cls.MODEL)
         authgroups  = user.groups.filter(permissions__content_type=contenttype)
         authgroups  = authgroups.filter(permissions__codename='app_access_allorders')
-        return Permissions.objects.filter(djangogroup__in=authgroups).exists()
+        return Permission.objects.filter(djangogroup__in=authgroups).exists()
 
 
 

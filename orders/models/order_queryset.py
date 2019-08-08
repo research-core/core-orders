@@ -49,7 +49,7 @@ class OrderQuerySet(models.QuerySet):
         if user.is_superuser:
             return self
 
-        ranked_permissions = Permissions.objects.filter_by_auth_permissions(
+        ranked_permissions = Permission.objects.filter_by_auth_permissions(
             user, self.model, required_codenames)
 
         if ranked_permissions.exists():
@@ -105,7 +105,7 @@ class OrderQuerySet(models.QuerySet):
         if user.is_superuser:
             return True
 
-        return Permissions.objects.filter_by_auth_permissions(
+        return Permission.objects.filter_by_auth_permissions(
             user=user,
             model=self.model,
             codenames=['add'],

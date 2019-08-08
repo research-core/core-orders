@@ -1,14 +1,12 @@
 from confapp import conf
-from orders.models import Order
+from django.conf import settings
 from pyforms.controls import ControlCheckBox
 from pyforms_web.widgets.django import ModelAdminWidget
-from django.conf import settings
-
 from django.contrib.contenttypes.models import ContentType
 from permissions.models import Permission
 
+from orders.models import Order
 from .orders_form import OrderEditFormWidget
-
 
 class OrderAdminWidget(ModelAdminWidget):
 
@@ -74,7 +72,7 @@ class OrderAdminWidget(ModelAdminWidget):
         contenttype = ContentType.objects.get_for_model(cls.MODEL)
         authgroups  = user.groups.filter(permissions__content_type=contenttype)
         authgroups  = authgroups.filter(permissions__codename='app_access_orders')
-        return Permissions.objects.filter(djangogroup__in=authgroups).exists()
+        return Permission.objects.filter(djangogroup__in=authgroups).exists()
 
 
     def __init__(self, *args, **kwargs):
