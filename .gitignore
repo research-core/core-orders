@@ -2,3 +2,7 @@
 core_orders\.egg-info/
 
 *.pyc
+
+build/
+
+dist/
