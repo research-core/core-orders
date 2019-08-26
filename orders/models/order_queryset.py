@@ -80,7 +80,7 @@ class OrderQuerySet(models.QuerySet):
                 filters.add(Q(group__in=groups_withaccess), Q.OR)
 
                 # Show orders with expense codes in user's groups
-                filters.add(Q(expensecode__financeproject__costcenter__group__in=groups_withaccess), Q.OR)
+                filters.add(Q(expensecode__project__costcenter__group__in=groups_withaccess), Q.OR)
 
                 qs = self.filter(filters).distinct()
 

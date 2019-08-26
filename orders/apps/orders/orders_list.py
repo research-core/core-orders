@@ -34,7 +34,7 @@ class OrderAdminWidget(ModelAdminWidget):
         'order_reqdate',
         'order_paymethod',
         'expensecode__expensecode_number',
-        'expensecode__financeproject',
+        'expensecode__project',
         'responsible',
         'group'
     ]

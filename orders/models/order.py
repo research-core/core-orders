@@ -82,10 +82,10 @@ class Order(models.Model):
         return '\n'.join(
             [
                 (
-                    code.financeproject.costcenter.costcenter_code + '-' +
-                    code.financeproject.financeproject_code + '-' +
+                    code.project.costcenter.costcenter_code + '-' +
+                    code.project.code + '-' +
                     code.expensecode_number + ': ' +
-                    code.financeproject.financeproject_name
+                    code.project.name
                 )
                 for code in self.expensecode.all()
             ]
