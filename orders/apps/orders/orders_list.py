@@ -72,7 +72,7 @@ class OrderAdminWidget(ModelAdminWidget):
         contenttype = ContentType.objects.get_for_model(cls.MODEL)
         authgroups  = user.groups.filter(permissions__content_type=contenttype)
         authgroups  = authgroups.filter(permissions__codename='app_access_orders')
-        return Permission.objects.filter(djangogroup__in=authgroups).exists()
+        return Permission.objects.filter(auth_group__in=authgroups).exists()
 
 
     def __init__(self, *args, **kwargs):
